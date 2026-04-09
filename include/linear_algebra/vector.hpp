@@ -24,9 +24,9 @@ public:
     friend Vector operator+(const Vector &left, const Vector &right);
     friend Vector operator-(const Vector &left, const Vector &right);
     friend Vector operator*(const Vector &left, const double right);
-    friend Vector operator*=(Vector &left, const double &right);
+    friend Vector &operator*=(Vector &left, const double right);
     friend Vector operator*(const double left, const Vector &right);
-    friend Vector operator/=(Vector &left, const double right);
+    friend Vector &operator/=(Vector &left, const double right);
     friend Vector operator/(const Vector &left, const double right);
     friend std::ostream &operator<<(std::ostream &os, const Vector &vec);
     friend std::istream &operator>>(std::istream &is, Vector &vec);
@@ -104,7 +104,7 @@ inline Vector operator-(const Vector &left, const Vector &right)
     Vector vec(left.x_, left.y_, left.z_);
     return vec -= right;
 }
-inline Vector operator*=(Vector &left, const double &right)
+inline Vector &operator*=(Vector &left, const double right)
 {
     left.x_ *= right;
     left.y_ *= right;
@@ -121,16 +121,18 @@ inline Vector operator*(const double left, const Vector &right)
     Vector vec(right.x_, right.y_, right.z_);
     return vec *= left;
 }
-Vector operator/=(Vector &left, const double right)
+inline Vector &operator/=(Vector &left, const double right)
 {
-    return Vector(left.x_ / right,
-                  left.y_ / right,
-                  left.z_ / right);
+    left.x_ /= right;
+    left.y_ /= right;
+    left.z_ /= right;
+    return left;
 }
 Vector operator/(const Vector &left, const double right)
 {
     Vector vec(left.x_, left.y_, left.z_);
     vec /= right;
+    return;
 }
 inline std::ostream &operator<<(std::ostream &os, const Vector &vec)
 {
