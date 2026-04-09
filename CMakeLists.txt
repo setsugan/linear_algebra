@@ -81,8 +81,8 @@ if(LINEAR_ALGEBRA_BUILD_TESTS)
 endif()
 
 if(LINEAR_ALGEBRA_BUILD_EXAMPLES)
-  add_executable(basic_usage examples/basic_usage.cpp)
-  target_link_libraries(basic_usage PRIVATE ${PROJECT_NAME}::${PROJECT_NAME})
+  add_executable(basic examples/basic.cpp)
+  target_link_libraries(basic PRIVATE ${PROJECT_NAME}::${PROJECT_NAME})
 endif()
 
 install(TARGETS ${PROJECT_NAME}
