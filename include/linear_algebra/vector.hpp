@@ -29,7 +29,7 @@ public:
     friend std::istream &operator>>(std::istream &is, Vector &vec);
 
     Vector() = default;
-    Vector(double x, double y, double z) : m_x(x), m_y(y), m_z(z) {}
+    Vector(double x, double y, double z) : x_(x), y_(y), z_(z) {}
     ~Vector() = default;
 
     double &operator[](size_t index)
@@ -37,11 +37,11 @@ public:
         switch (index)
         {
         case 0:
-            return m_x;
+            return x_;
         case 1:
-            return m_y;
+            return y_;
         case 2:
-            return m_z;
+            return z_;
         default:
             throw std::out_of_range("index out of bounds");
         }
@@ -51,11 +51,11 @@ public:
         switch (index)
         {
         case 0:
-            return m_x;
+            return x_;
         case 1:
-            return m_y;
+            return y_;
         case 2:
-            return m_z;
+            return z_;
         default:
             throw std::out_of_range("index out of bounds");
         }
@@ -63,59 +63,59 @@ public:
 
     double length() const
     {
-        return sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+        return sqrt(x_ * x_ + y_ * y_ + z_ * z_);
     }
 
     void print_info() const
     {
-        std::cout << "Vector [ x : " << m_x << ", y : " << m_y << ", z : " << m_z << "]" << std::endl;
+        std::cout << "Vector [ x : " << x_ << ", y : " << y_ << ", z : " << z_ << "]" << std::endl;
     }
 
 private:
-    double m_x;
-    double m_y;
-    double m_z;
+    double x_;
+    double y_;
+    double z_;
 };
 
 inline Vector &operator+=(Vector &left, const Vector &right)
 {
-    left.m_x += right.m_x;
-    left.m_y += right.m_y;
-    left.m_z += right.m_z;
+    left.x_ += right.x_;
+    left.y_ += right.y_;
+    left.z_ += right.z_;
     return left;
 }
 inline Vector &operator-=(Vector &left, const Vector &right)
 {
-    left.m_x -= right.m_x;
-    left.m_y -= right.m_y;
-    left.m_z -= right.m_z;
+    left.x_ -= right.x_;
+    left.y_ -= right.y_;
+    left.z_ -= right.z_;
     return left;
 }
 inline Vector operator+(const Vector &left, const Vector &right)
 {
-    Vector vec(left.m_x, left.m_y, left.m_z);
+    Vector vec(left.x_, left.y_, left.z_);
     return vec += right;
 }
 inline Vector operator-(const Vector &left, const Vector &right)
 {
-    Vector vec(left.m_x, left.m_y, left.m_z);
+    Vector vec(left.x_, left.y_, left.z_);
     return vec -= right;
 }
 inline Vector operator*(const Vector &left, const double right)
 {
-    return Vector(left.m_x * right,
-                    left.m_y * right,
-                    left.m_z * right);
+    return Vector(left.x_ * right,
+                    left.y_ * right,
+                    left.z_ * right);
 }
 inline Vector operator*(const double left, const Vector &right)
 {
-    return Vector(right.m_x * left,
-                    right.m_y * left,
-                    right.m_z * left);
+    return Vector(right.x_ * left,
+                    right.y_ * left,
+                    right.z_ * left);
 }
 inline std::ostream &operator<<(std::ostream &os, const Vector &vec)
 {
-    os << "Vector [ x : " << vec.m_x << ", y : " << vec.m_y << ", z : " << vec.m_z << "]";
+    os << "Vector [ x : " << vec.x_ << ", y : " << vec.y_ << ", z : " << vec.z_ << "]";
     return os;
 }
 inline std::istream &operator>>(std::istream &is, Vector &vec)
@@ -128,9 +128,9 @@ inline std::istream &operator>>(std::istream &is, Vector &vec)
     std::cout << "order [x,y,z], separated by spaces : ";
 
     is >> x >> y >> z;
-    vec.m_x = x;
-    vec.m_y = y;
-    vec.m_z = z;
+    vec.x_ = x;
+    vec.y_ = y;
+    vec.z_ = z;
 
     return is;
 }
