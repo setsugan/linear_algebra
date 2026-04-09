@@ -2,6 +2,9 @@
 
 int main(void)
 {
-    linear_algebra::Vector v {1, 1, 1};
+    linear_algebra::Vector v {10, 10, 10};
+    v.print_info();
+
+    v = v / 2;
     v.print_info();
 }
