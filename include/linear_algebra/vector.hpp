@@ -1,3 +1,13 @@
+/**
+ * @file vector.hpp
+ * @author riku yukimaru (setsugan.robocon@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date 2026-04-09
+ *
+ * @copyright Copyright (c) 2026
+ *
+ */
 #ifndef LINEAR_ALGEBRA_VECTOR_HPP
 #define LINEAR_ALGEBRA_VECTOR_HPP
 
